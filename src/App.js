@@ -59,7 +59,7 @@ function App() {
             }}>
               {item.videos.length && item.videos.map((video,index)=>(
                
-                <div style={{width: "500px",height:"400px"}}>
+                <div style={{width: "600px",height:"400px"}}>
                    <div>{Parser(video.embed)}</div>
                    <div>{item.title}</div>
                    <div>{item.competition}</div>
