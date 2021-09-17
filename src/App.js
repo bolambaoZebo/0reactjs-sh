@@ -23,7 +23,9 @@ function App() {
   }
 
   useEffect(() => {
-    fetchData();
+    setTimeout(
+      fetchData(), 
+    60000)
     }, []);
   
   
