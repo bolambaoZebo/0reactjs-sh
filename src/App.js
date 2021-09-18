@@ -12,7 +12,6 @@ function App() {
   async function fetchData() {
     try {
       const result = await axios.get("https://www.scorebat.com/video-api/v3/");
-      console.log(result.data.response)
 
       setData(result.data.response)
       setFilteredData(result.data.response);
@@ -32,9 +31,7 @@ function App() {
   const handleSearch = (event) =>{
     let value = event.target.value.toLowerCase();
     let result = [];
-    console.log(value);
     result = data.filter((item) => {
-      console.log(item.title)
     return item.title.toLowerCase().includes(value)
     });
     setFilteredData(result);
