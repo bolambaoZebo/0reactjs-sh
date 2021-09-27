@@ -122,7 +122,7 @@ function App() {
   e.preventDefault();
   console.log("post Soccer news")
 
-  setSoccerIsloading(true)
+  setIsloading(true)
 
   const newsSoccerPost = {
       en:{
@@ -147,7 +147,9 @@ function App() {
           setPostSoccerTitle('')
           setPostSoccerBody('')
           setPostSoccerUrl('')
-          setSoccerIsloading(false)
+          setPostSoccerTitleChinese('')
+          setPostSoccerBodyChinese('')
+          setIsloading(false)
       })
       .catch((err) => console.log(err))
 }
