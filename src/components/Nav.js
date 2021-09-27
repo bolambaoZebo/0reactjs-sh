@@ -31,6 +31,10 @@ const Nav = () => {
                <Link to='/horse-news'>
                     <li>Horse News</li>
                </Link>
+
+               <Link to='/soccer-news'>
+                    <li>Soccer News</li>
+               </Link>
            </ul>
        </nav>
     )

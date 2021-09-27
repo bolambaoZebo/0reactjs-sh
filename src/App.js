@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 
 import HorseNews from './components/HorseNews';
 import Nav from './components/Nav';
+import SoccerNews from './components/SoccerNews';
 
 
 const HomePage = ({filteredData, handleSearch}) => {
@@ -45,12 +46,21 @@ const HomePage = ({filteredData, handleSearch}) => {
 
 function App() {
 
+  //Horse state variables
   const [data,setData] = useState([]);
   const [ isLoading, setIsloading ] = useState(false)
   const [postTitle, setPostTitle] = useState('');
   const [postBody, setPostBody] = useState('');
   const [postUrl, setPostUrl] = useState('');
 
+  //Soccer state variables
+  const [soccerData,setSoccerData] = useState([]);
+  const [ isSoccerLoading, setSoccerIsloading ] = useState(false)
+  const [postSoccerTitle, setPostSoccerTitle] = useState('');
+  const [postSoccerBody, setPostSoccerBody] = useState('');
+  const [postSoccerUrl, setPostSoccerUrl] = useState('');
+
+  //filter soccer video
   const [filteredData,setFilteredData] = useState(data);
 
   async function fetchData() {
@@ -81,6 +91,8 @@ function App() {
     setFilteredData(result);
   }
 
+  
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("post news")
@@ -104,6 +116,29 @@ function App() {
         .catch((err) => console.log(err))
  }
 
+ const handleSoccerSubmit = async (e) => {
+  e.preventDefault();
+  console.log("post Soccer news")
+
+  setSoccerIsloading(true)
+
+  const newsSoccerPost = {
+      title: postTitle,
+      description: postBody,
+      imageUrl: postUrl
+  }
+  const url = 'https://vlog-threewe-apinodejs.herokuapp.com/soccer-news'
+     await axios.post(url,newsSoccerPost)
+      .then((res) => {
+          console.log(res)
+          setPostSoccerTitle('')
+          setPostSoccerBody('')
+          setPostSoccerUrl('')
+          setSoccerIsloading(false)
+      })
+      .catch((err) => console.log(err))
+}
+
   return (
     <Route>
       <div>
@@ -123,6 +158,7 @@ function App() {
                   </Route>
 
                   <Route path='/horse-news'>
+
                   <HorseNews 
                     handleSubmit={handleSubmit}
                     postTitle={postTitle}
@@ -131,6 +167,19 @@ function App() {
                     setPostBody={setPostBody}
                     postUrl={postUrl}
                     setPostUrl={setPostUrl}
+                  />
+                  </Route>
+
+                  <Route path='/soccer-news'>
+
+                  <SoccerNews 
+                    handleSubmit={handleSoccerSubmit}
+                    postTitle={postSoccerTitle}
+                    setPostTitle={setPostSoccerTitle}
+                    postBody={postSoccerBody}
+                    setPostBody={setPostSoccerBody}
+                    postUrl={postSoccerUrl}
+                    setPostUrl={setPostSoccerUrl}
                   />
                   </Route>
               </Switch>

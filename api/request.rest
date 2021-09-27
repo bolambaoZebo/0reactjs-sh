@@ -1,0 +1,7 @@
+# GET https://vlog-threewe-apinodejs.herokuapp.com/horse-race
+
+# GET https://vlog-threewe-apinodejs.herokuapp.com/horse-news
+
+# GET https://vlog-threewe-apinodejs.herokuapp.com/soccer-news
+
+GET https://vlog-threewe-apinodejs.herokuapp.com/horse-news
