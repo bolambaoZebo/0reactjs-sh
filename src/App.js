@@ -12,7 +12,6 @@ import SoccerNews from './components/SoccerNews';
 
 const HomePage = ({filteredData, handleSearch}) => {
     return <div>
-              
                 <div style={{ marginTop: '30px', marginBottom: '50px' }}>
                   <label style={{fontSize: '24px'}}>Search:</label>
                   <input 
