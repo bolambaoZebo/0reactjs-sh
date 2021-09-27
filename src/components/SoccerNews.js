@@ -4,13 +4,17 @@ import { Route } from 'react-router';
 import {useEffect, useState} from "react";
 
 const SoccerNews = ({
-    handleSoccerSubmit, 
-    postTitle, 
-    setPostTitle, 
-    postBody, 
-    setPostBody,
-    postUrl,
-    setPostUrl
+    handleSoccerSubmit,
+    postSoccerTitle,
+    setPostSoccerTitle,
+    postSoccerBody,
+    setPostSoccerBody,
+    postSoccerUrl,
+    setPostSoccerUrl,
+    postSoccerTitleChinese,
+    setPostSoccerTitleChinese,
+    postSoccerBodyChinese,
+    setPostSoccerBodyChinese
 }) => {
 
     return <div>
@@ -32,8 +36,22 @@ const SoccerNews = ({
                                 width: '50%'
                             }}
                             required
-                            value={postTitle}
-                            onChange={(e) => setPostTitle(e.target.value)}
+                            value={postSoccerTitle}
+                            onChange={(e) => setPostSoccerTitle(e.target.value)}
+                        />
+
+                        <label htmlFor="postTitle">足球中文名称：</label>
+                        <input
+                            id="postTitle"
+                            type="text"
+                            style={{
+                                margin: '1rem 0',
+                                height: '20px',
+                                width: '50%'
+                            }}
+                            required
+                            value={postSoccerTitleChinese}
+                            onChange={(e) => setPostSoccerTitleChinese(e.target.value)}
                         />
 
                      <label htmlFor="postTitle">Soccer Image Url:</label>
@@ -46,8 +64,8 @@ const SoccerNews = ({
                                 width: '50%'
                             }}
                             required
-                            value={postUrl}
-                            onChange={(e) => setPostUrl(e.target.value)}
+                            value={postSoccerUrl}
+                            onChange={(e) => setPostSoccerUrl(e.target.value)}
                         />
 
                         <label htmlFor="postBody">Soccer Post:</label>
@@ -61,9 +79,25 @@ const SoccerNews = ({
                                 outline: 'none'
                             }}
                             required
-                            value={postBody}
-                            onChange={(e) => setPostBody(e.target.value)}
+                            value={postSoccerBody}
+                            onChange={(e) => setPostSoccerBody(e.target.value)}
                         />
+
+                        <label htmlFor="postBody">足球中文邮报：</label>
+                        <textarea
+                            id="postBody"
+                            style={{
+                                margin: '1rem 0',
+                                height: '100px',
+                                width: '50%',
+                                padding: '0.25rem',
+                                outline: 'none'
+                            }}
+                            required
+                            value={postSoccerBodyChinese}
+                            onChange={(e) => setPostSoccerBodyChinese(e.target.value)}
+                        />
+
                         <button 
                             style={{
                                 margin: '1rem',

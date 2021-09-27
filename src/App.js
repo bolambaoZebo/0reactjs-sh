@@ -59,6 +59,8 @@ function App() {
   const [postSoccerTitle, setPostSoccerTitle] = useState('');
   const [postSoccerBody, setPostSoccerBody] = useState('');
   const [postSoccerUrl, setPostSoccerUrl] = useState('');
+  const [postSoccerTitleChinese, setPostSoccerTitleChinese] = useState('');
+  const [postSoccerBodyChinese, setPostSoccerBodyChinese] = useState('');
 
   //filter soccer video
   const [filteredData,setFilteredData] = useState(data);
@@ -123,10 +125,21 @@ function App() {
   setSoccerIsloading(true)
 
   const newsSoccerPost = {
-      title: postTitle,
-      description: postBody,
-      imageUrl: postUrl
+      en:{
+          title: postSoccerTitle,
+          description: postSoccerBody,
+         },
+      zh:{
+          titleChinese: postSoccerTitleChinese,
+          descriptionChinese: postSoccerBodyChinese,
+         },
+         imageUrl: postSoccerUrl
   }
+
+        // title: postSoccerTitle,
+      // description: postSoccerBody,
+      // imageUrl: postSoccerUrl
+
   const url = 'https://vlog-threewe-apinodejs.herokuapp.com/soccer-news'
      await axios.post(url,newsSoccerPost)
       .then((res) => {
@@ -173,13 +186,17 @@ function App() {
                   <Route path='/soccer-news'>
 
                   <SoccerNews 
-                    handleSubmit={handleSoccerSubmit}
-                    postTitle={postSoccerTitle}
-                    setPostTitle={setPostSoccerTitle}
-                    postBody={postSoccerBody}
-                    setPostBody={setPostSoccerBody}
-                    postUrl={postSoccerUrl}
-                    setPostUrl={setPostSoccerUrl}
+                    handleSoccerSubmit={handleSoccerSubmit}
+                    postSoccerTitle={postSoccerTitle}
+                    setPostSoccerTitle={setPostSoccerTitle}
+                    postSoccerBody={postSoccerBody}
+                    setPostSoccerBody={setPostSoccerBody}
+                    postSoccerUrl={postSoccerUrl}
+                    setPostSoccerUrl={setPostSoccerUrl}
+                    postSoccerTitleChinese={postSoccerTitleChinese}
+                    setPostSoccerTitleChinese={setPostSoccerTitleChinese}
+                    postSoccerBodyChinese={postSoccerBodyChinese}
+                    setPostSoccerBodyChinese={setPostSoccerBodyChinese}
                   />
                   </Route>
               </Switch>
