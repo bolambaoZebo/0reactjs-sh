@@ -14,7 +14,9 @@ const SoccerNews = ({
     postSoccerTitleChinese,
     setPostSoccerTitleChinese,
     postSoccerBodyChinese,
-    setPostSoccerBodyChinese
+    setPostSoccerBodyChinese,
+    teamLeague,
+    setTeamLeague
 }) => {
 
     return <div>
@@ -40,7 +42,7 @@ const SoccerNews = ({
                             onChange={(e) => setPostSoccerTitle(e.target.value)}
                         />
 
-                        <label htmlFor="postTitle">足球中文名称：</label>
+                        <label htmlFor="postTitle">Title in chinesse足球中文名称：</label>
                         <input
                             id="postTitle"
                             type="text"
@@ -52,6 +54,20 @@ const SoccerNews = ({
                             required
                             value={postSoccerTitleChinese}
                             onChange={(e) => setPostSoccerTitleChinese(e.target.value)}
+                        />
+
+                    <label htmlFor="postTitle">Team League：</label>
+                        <input
+                            id="postTitle"
+                            type="text"
+                            style={{
+                                margin: '1rem 0',
+                                height: '20px',
+                                width: '50%'
+                            }}
+                            required
+                            value={teamLeague}
+                            onChange={(e) => setTeamLeague(e.target.value)}
                         />
 
                      <label htmlFor="postTitle">Soccer Image Url:</label>
@@ -83,7 +99,7 @@ const SoccerNews = ({
                             onChange={(e) => setPostSoccerBody(e.target.value)}
                         />
 
-                        <label htmlFor="postBody">足球中文邮报：</label>
+                        <label htmlFor="postBody">Post in chinese足球中文邮报：</label>
                         <textarea
                             id="postBody"
                             style={{

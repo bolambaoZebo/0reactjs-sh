@@ -8,6 +8,8 @@ import {useEffect, useState} from "react";
 import HorseNews from './components/HorseNews';
 import Nav from './components/Nav';
 import SoccerNews from './components/SoccerNews';
+import HorseList from './components/HorseList';
+import SoccerList from './components/SoccerList';
 
 
 const HomePage = ({filteredData, handleSearch}) => {
@@ -61,8 +63,24 @@ function App() {
   const [postSoccerTitleChinese, setPostSoccerTitleChinese] = useState('');
   const [postSoccerBodyChinese, setPostSoccerBodyChinese] = useState('');
 
+  const [teamLeague, setTeamLeague] = useState('');
+
   //filter soccer video
   const [filteredData,setFilteredData] = useState(data);
+
+  const [listdata,setListData] = useState([]);
+  const [filteredListData,setFilteredListData] = useState(listdata);
+
+  const fetchListData = async () => {
+    try {
+      const result = await axios.get("https://sleepy-turing-6de1dd.netlify.app/.netlify/functions/api");
+      setListData(result.data)
+      setFilteredListData(result.data);
+
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   async function fetchData() {
     try {
@@ -78,6 +96,7 @@ function App() {
 
   useEffect(() => {
     setTimeout(
+      fetchListData,
       fetchData(), 
     60000)
     }, []);
@@ -127,19 +146,19 @@ function App() {
       en:{
           title: postSoccerTitle,
           description: postSoccerBody,
+          teamLeague: teamLeague
          },
       zh:{
           titleChinese: postSoccerTitleChinese,
           descriptionChinese: postSoccerBodyChinese,
+          teamLeague: teamLeague
          },
          imageUrl: postSoccerUrl
   }
 
-        // title: postSoccerTitle,
-      // description: postSoccerBody,
-      // imageUrl: postSoccerUrl
+  console.log(newsSoccerPost)
 
-  const url = 'https://vlog-threewe-apinodejs.herokuapp.com/soccer-news'
+  const url = 'https://sleepy-turing-6de1dd.netlify.app/.netlify/functions/api'//'https://vlog-threewe-apinodejs.herokuapp.com/soccer-news'
      await axios.post(url,newsSoccerPost)
       .then((res) => {
           console.log(res)
@@ -148,6 +167,7 @@ function App() {
           setPostSoccerUrl('')
           setPostSoccerTitleChinese('')
           setPostSoccerBodyChinese('')
+          setTeamLeague('')
           setIsloading(false)
       })
       .catch((err) => console.log(err))
@@ -198,7 +218,19 @@ function App() {
                     setPostSoccerTitleChinese={setPostSoccerTitleChinese}
                     postSoccerBodyChinese={postSoccerBodyChinese}
                     setPostSoccerBodyChinese={setPostSoccerBodyChinese}
+                    teamLeague={teamLeague}
+                    setTeamLeague={setTeamLeague}
                   />
+                  </Route>
+
+                  <Route path='/horse-news-list'>
+                    <HorseList/>
+                  </Route>
+
+                  <Route path='/soccer-news-list'>
+                    <SoccerList
+                      listData={filteredListData}
+                    />
                   </Route>
               </Switch>
               </div>

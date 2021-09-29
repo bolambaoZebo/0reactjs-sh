@@ -18,7 +18,7 @@ const Nav = () => {
             </div>
 
            <ul style={{
-               width:'30%',
+               width:'40%',
                display: "flex",
                justifyContent: 'space-around',
                alignItems: 'center',
@@ -34,6 +34,14 @@ const Nav = () => {
 
                <Link to='/soccer-news'>
                     <li>Soccer News</li>
+               </Link>
+
+               <Link to='/horse-news-list'>
+                    <li>Horse News list</li>
+               </Link>
+
+               <Link to='/soccer-news-list'>
+                    <li>Soccer News list</li>
                </Link>
            </ul>
        </nav>
