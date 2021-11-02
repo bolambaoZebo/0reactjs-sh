@@ -51,7 +51,9 @@ function App() {
   const [data,setData] = useState([]);
   const [ isLoading, setIsloading ] = useState(false)
   const [postTitle, setPostTitle] = useState('');
+  const [postTitleChinese, setPostTitleChinese] = useState('');
   const [postBody, setPostBody] = useState('');
+  const [postBodyChinese, setPostBodyChinese] = useState('');
   const [postUrl, setPostUrl] = useState('');
 
   //Soccer state variables
